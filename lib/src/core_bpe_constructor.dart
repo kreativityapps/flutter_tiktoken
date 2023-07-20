@@ -28,61 +28,61 @@ class CoreBPEConstructor {
     this.explicitNVocab,
   });
 
-  factory CoreBPEConstructor.gpt2() {
-    return CoreBPEConstructor._(
-      name: "gpt2",
-      explicitNVocab: 50257,
-      patStr:
-          r"'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+",
-      mergeableRanks: TiktokenDataProcessCenter().gpt2.map(
-        (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
-      ),
-      specialTokens: {ENDOFTEXT: 50256},
-    );
-  }
-
-  factory CoreBPEConstructor.r50kBase() {
-    return CoreBPEConstructor._(
-      name: "r50k_base",
-      explicitNVocab: 50257,
-      patStr:
-          r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
-      mergeableRanks: TiktokenDataProcessCenter().r50kBase.map(
-        (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
-      ),
-      specialTokens: {ENDOFTEXT: 50256},
-    );
-  }
-
-  factory CoreBPEConstructor.p50kBase() {
-    return CoreBPEConstructor._(
-      name: "p50k_base",
-      explicitNVocab: 50281,
-      patStr:
-          r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
-      mergeableRanks: TiktokenDataProcessCenter().p50kBase.map(
-        (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
-      ),
-      specialTokens: {ENDOFTEXT: 50256},
-    );
-  }
-
-  factory CoreBPEConstructor.p50kEdit() {
-    return CoreBPEConstructor._(
-      name: "p50k_edit",
-      patStr:
-          r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
-      mergeableRanks: TiktokenDataProcessCenter().p50kBase.map(
-        (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
-      ),
-      specialTokens: {
-        ENDOFTEXT: 50256,
-        FIM_PREFIX: 50281,
-        FIM_MIDDLE: 50282,
-        FIM_SUFFIX: 50283
-      },
-    );
-  }
+  // factory CoreBPEConstructor.gpt2() {
+  //   return CoreBPEConstructor._(
+  //     name: "gpt2",
+  //     explicitNVocab: 50257,
+  //     patStr:
+  //         r"'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+",
+  //     mergeableRanks: TiktokenDataProcessCenter().gpt2.map(
+  //       (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
+  //     ),
+  //     specialTokens: {ENDOFTEXT: 50256},
+  //   );
+  // }
+  //
+  // factory CoreBPEConstructor.r50kBase() {
+  //   return CoreBPEConstructor._(
+  //     name: "r50k_base",
+  //     explicitNVocab: 50257,
+  //     patStr:
+  //         r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
+  //     mergeableRanks: TiktokenDataProcessCenter().r50kBase.map(
+  //       (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
+  //     ),
+  //     specialTokens: {ENDOFTEXT: 50256},
+  //   );
+  // }
+  //
+  // factory CoreBPEConstructor.p50kBase() {
+  //   return CoreBPEConstructor._(
+  //     name: "p50k_base",
+  //     explicitNVocab: 50281,
+  //     patStr:
+  //         r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
+  //     mergeableRanks: TiktokenDataProcessCenter().p50kBase.map(
+  //       (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
+  //     ),
+  //     specialTokens: {ENDOFTEXT: 50256},
+  //   );
+  // }
+  //
+  // factory CoreBPEConstructor.p50kEdit() {
+  //   return CoreBPEConstructor._(
+  //     name: "p50k_edit",
+  //     patStr:
+  //         r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""",
+  //     mergeableRanks: TiktokenDataProcessCenter().p50kBase.map(
+  //       (k, v) => MapEntry(ByteArray.fromList(base64Decode(k)), v),
+  //     ),
+  //     specialTokens: {
+  //       ENDOFTEXT: 50256,
+  //       FIM_PREFIX: 50281,
+  //       FIM_MIDDLE: 50282,
+  //       FIM_SUFFIX: 50283
+  //     },
+  //   );
+  // }
 
   factory CoreBPEConstructor.cl100kBase() {
     return CoreBPEConstructor._(
@@ -109,10 +109,10 @@ class CoreBPEConstructor {
   final int? explicitNVocab;
 
   static const all = {
-    "gpt2",
-    "r50k_base",
-    "p50k_base",
-    "p50k_edit",
+    // "gpt2",
+    // "r50k_base",
+    // "p50k_base",
+    // "p50k_edit",
     "cl100k_base",
   };
 }
